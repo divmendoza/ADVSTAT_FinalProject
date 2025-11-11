@@ -1,11 +1,838 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+
+  <head>
+    <title>Hypothesis Testing — Z Test Calculator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="generator" content="GrapesJS Studio" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="gjs-t-body body">
+    <header class="header" id="iuqvx">
+      <div class="header-container" id="itxyi">
+        <div class="brand-group" id="ikbeh">
+          <img alt="Statistics Icon" src="https://api.iconify.design/lucide-chart-line.svg?color=%230b5d3b" class="brand-icon" id="ijdhi" />
+          <div class="brand-text" id="i6nnf">
+            <span class="brand-name" id="i5i8e">Hypothesis Lab</span>
+            <span class="brand-tagline" id="iu4eh">Z-Test • Normal Curve • Decisions</span>
+          </div>
+        </div>
+        <nav class="top-navigation" id="iloya">
+          <ul class="nav-list" id="ikfy4">
+            <li id="i8fj3">
+              <a href="#" class="gjs-t-link nav-link" id="ijgce">Docs</a>
+            </li>
+            <li id="i5545">
+              <a href="#calculator" class="gjs-t-link nav-link" id="ilu3l">Calculator</a>
+            </li>
+            <li id="i6do8">
+              <a href="#developers" class="gjs-t-link nav-link" id="idged">Developers</a>
+            </li>
+          </ul>
+        </nav>
+        <a href="#calculator" class="gjs-t-button cta-button" id="imglk">Refresh</a>
+      </div>
+    </header>
+    <section class="hero-section" id="i95s3">
+      <div class="hero-container" id="iyk7k">
+        <div class="hero-content" id="ifots">
+          <h1 class="gjs-t-h1 hero-title" id="ig1fl">Hypothesis Testing Z-Test</h1>
+          <p class="hero-subtitle" id="iizjk">
+            Enter your hypotheses, select the significance level, compute Z-statistics, visualize the normal curve with shaded acceptance and rejection regions, and get an automatic decision.
+          </p>
+          <div class="hero-actions" id="iy3po">
+            <a href="#calculator" class="gjs-t-button hero-primary-button" id="i5q43">Open Calculator</a>
+            <a href="#how-it-works" class="gjs-t-link hero-secondary-link" id="is9ii">How it works</a>
+          </div>
+          <ul class="hero-feature-list" id="iirnx">
+            <li class="hero-feature-item" id="ig05k">
+              <img alt="Calculator icon" src="https://api.iconify.design/lucide-calculator.svg?color=%230b5d3b" class="feature-icon" id="ijwbl" />
+              Auto Z and decision
+            </li>
+            <li class="hero-feature-item" id="iim32">
+              <img alt="Chart icon" src="https://api.iconify.design/lucide-area-chart.svg?color=%230b5d3b" class="feature-icon" id="iiwvf" />
+              Interactive curve
+            </li>
+            <li class="hero-feature-item" id="inkrk">
+              <img alt="Shield icon" src="https://api.iconify.design/lucide-shield-check.svg?color=%230b5d3b" class="feature-icon" id="i73x5" />
+              Accessible inputs
+            </li>
+          </ul>
+        </div>
+        <div class="hero-media" id="ikbvq">
+          <img alt="Statistics illustration" src="https://app.grapesjs.com/api/assets/random-image?query=%22statistics%20chart%22&amp;w=900&amp;h=560" loading="eager" class="hero-image" id="i9v3r" />
+        </div>
+      </div>
+    </section>
+    <section id="calculator" class="calculator-section">
+      <div class="calculator-container" id="il20g">
+        <div class="input-panel" id="i9ugf">
+          <h2 class="gjs-t-h2 input-title" id="is2m7">Inputs</h2>
+          <div class="hypotheses-grid" id="igc7y">
+            <div class="h0-group" id="iovnk">
+              <label for="h0-operator" class="h0-label" id="i4cl1">Null hypothesis (H₀)</label>
+              <div class="h0-controls" id="ilr79">
+                <div class="h0-operator-wrapper" id="ik95p">
+                  <select type="text" id="h0-operator" class="h0-operator">
+                    <option value="=" id="ike87">μ =</option>
+                    <option value="≤" id="ipara">μ ≤</option>
+                    <option value="≥" id="i171f">μ ≥</option>
+                  </select>
+                  <img alt="Dropdown" src="https://api.iconify.design/lucide-chevron-down.svg?color=%230a3f29" class="select-icon" id="i2qoz" />
+                </div>
+                <input type="number" id="mu0" step="any" placeholder="μ₀ (e.g., 50)" class="mu0-input" />
+              </div>
+              <span class="h0-hint" id="i64wt">Define the hypothesized population mean μ₀.</span>
+            </div>
+            <div class="h1-group" id="ilu3c">
+              <label for="h1-operator" class="h1-label" id="iffog">Alternative hypothesis (H₁)</label>
+              <div class="h1-operator-wrapper" id="i4x1a">
+                <select type="text" id="h1-operator" class="h1-operator">
+                  <option value="!=" id="itrsc">μ ≠ μ₀ (Two-tailed)</option>
+                  <option value="&lt;" id="ijlrh">μ &lt; μ₀ (Left-tailed)</option>
+                  <option value="&gt;" id="ig7i1">μ &gt; μ₀ (Right-tailed)</option>
+                </select>
+                <img alt="Dropdown" src="https://api.iconify.design/lucide-chevron-down.svg?color=%230a3f29" class="select-icon" id="io9zj" />
+              </div>
+              <span class="h1-hint" id="i17ph">Select tail based on your research question.</span>
+            </div>
+          </div>
+          <div class="parameters-grid" id="iox86">
+            <div class="sample-mean-group" id="ikvff">
+              <label for="xbar" class="sample-mean-label" id="iinct">Sample mean (x̄)</label>
+              <input type="number" id="xbar" step="any" placeholder="e.g., 52.3" class="sample-mean-input" />
+            </div>
+            <div class="sigma-group" id="ixac5">
+              <label for="sigma" class="sigma-label" id="i7tezf">Population σ</label>
+              <input type="number" id="sigma" step="any" placeholder="e.g., 10" class="sigma-input" />
+            </div>
+            <div class="sample-size-group" id="ibgypd">
+              <label for="n" class="sample-size-label" id="iz5gm9">Sample size (n)</label>
+              <input type="number" id="n" step="1" min="1" placeholder="e.g., 36" class="sample-size-input" />
+            </div>
+            <div class="alpha-group" id="iqxkii">
+              <label for="alpha" class="alpha-label" id="ibfc1w">Significance level (α)</label>
+              <div class="alpha-wrapper" id="it339n">
+                <select type="text" id="alpha" class="alpha-select">
+                  <option value="0.10" id="ij5q82">0.10</option>
+                  <option value="0.05" selected id="icfjma">0.05</option>
+                  <option value="0.01" id="ivfuhj">0.01</option>
+                </select>
+                <img alt="Dropdown" src="https://api.iconify.design/lucide-chevron-down.svg?color=%230a3f29" class="select-icon" id="iz6zb8" />
+              </div>
+            </div>
+          </div>
+          <div class="actions-row" id="id5rgy">
+            <button type="button" id="computeBtn" class="gjs-t-button compute-button">
+              Compute Z
+            </button>
+            <button type="button" id="resetBtn" class="reset-button">
+              Reset
+            </button>
+            <span class="autosave-hint" id="iy95kj">Changes auto-update the graph and decision.</span>
+          </div>
+          <div class="results-grid" id="iylto4">
+            <div class="result-card" id="ieg725">
+              <div class="result-header" id="ijoca3">
+                <span class="result-title" id="ihfj7w">Z-statistic</span>
+                <img alt="Sigma icon" src="https://api.iconify.design/lucide-sigma.svg?color=%230b5d3b" class="result-icon" id="ihalyo" />
+              </div>
+              <div id="zStat" aria-live="polite" class="z-value">—</div>
+              <div class="z-formula" id="ix3ozd">Z = (x̄ − μ₀) / (σ / √n)</div>
+            </div>
+            <div class="critical-card" id="il2vs5">
+              <div class="critical-header" id="i4mqlj">
+                <span class="critical-title" id="ie7ent">Critical Z-value(s)</span>
+                <img alt="Ruler icon" src="https://api.iconify.design/lucide-ruler.svg?color=%230b5d3b" class="result-icon" id="i6uah6" />
+              </div>
+              <div id="criticalZ" aria-live="polite" class="critical-value">—</div>
+              <div id="tailInfo" class="tail-info">Select H₁ to set tail.</div>
+            </div>
+            <div class="decision-card" id="i1z64r">
+              <div class="decision-header" id="i4xioj">
+                <span class="decision-title" id="ibvx61">Decision</span>
+                <img alt="Gavel icon" src="https://api.iconify.design/lucide-gavel.svg?color=%230b5d3b" class="result-icon" id="irkjs1" />
+              </div>
+              <div id="decision" aria-live="polite" class="decision-value">—</div>
+              <div id="pValue" aria-live="polite" class="pvalue-text">p-value: —</div>
+            </div>
+          </div>
+        </div>
+        <div class="visualization-panel" id="ig081j">
+          <h2 class="gjs-t-h2 visualization-title" id="idxb1k">Normal Distribution</h2>
+          <div class="canvas-card" id="ia7nt2">
+            <canvas id="curveCanvas" aria-label="Normal curve with shaded regions" class="normal-curve-canvas"></canvas>
+            <div class="legend-grid" id="i5xt8k">
+              <div class="legend-item" id="ic7idx">
+                <span class="legend-swatch" id="ispsn3"></span>
+                <span class="legend-label" id="i873ws">Acceptance region</span>
+              </div>
+              <div class="legend-item" id="iqegvu">
+                <span class="legend-swatch" id="imh0oz"></span>
+                <span class="legend-label" id="iyc28d">Rejection region(s)</span>
+              </div>
+            </div>
+          </div>
+          <div id="how-it-works" class="info-card">
+            <div class="info-header" id="irqtaj">
+              <img alt="Info icon" src="https://api.iconify.design/lucide-info.svg?color=%230b5d3b" class="info-icon" id="i3yz35" />
+              <div class="info-content" id="ic5wt5">
+                <h3 class="info-title" id="itxxmi">How this works</h3>
+                <ul class="info-list" id="i2f44s">
+                  - Choose H₀ and H₁ using dropdowns and set μ₀.
+                  - Enter sample mean x̄, population σ, and sample size n.
+                  - Select significance α. We support 0.10, 0.05, 0.01.
+                  - The app computes Z, shows critical value(s), shades the curve, and decides to reject or fail to reject H₀.
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="notes-card" id="itz7m1">
+            <div class="notes-header" id="ixqkql">
+              <img alt="Note icon" src="https://api.iconify.design/lucide-sticky-note.svg?color=%230b5d3b" class="note-icon" id="ih5l9m" />
+              <div class="notes-content" id="i3ycnh">
+                <h3 class="notes-title" id="i4f1w8">Assumptions</h3>
+                <p class="notes-text" id="i20nkk">
+                  Z-test assumes known population standard deviation and normally distributed population (or large n via CLT).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="developers" class="developers-section">
+      <div id="iz83m4" class="developers-container">
+        <h2 id="i9rt4c" class="gjs-t-h2 developers-title">Developers</h2>
+        <div id="i76rda" class="lead-grid dev-grid">
+          <div id="ix9k4o" class="lead-card dev-card">
+            <div class="dev-card-head" id="ii45qk">
+              <img alt="Crown icon" src="https://api.iconify.design/lucide-crown.svg?color=%230f7a4b" class="role-icon dev-icon" id="ighngo" />
+              <span class="role-title" id="inc6fj">Lead Developer</span>
+            </div>
+            <div class="dev-card-body" id="iz3qlh">
+              <img alt="Lead developer photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;developer portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="i04iae" />
+              <div class="lead-info" id="ij5da7">
+                <span class="lead-name" id="isy7ua">Dave Mendoza</span>
+                <span class="lead-subtitle dev-role-inline" id="ig35pw">
+                  <img alt="Chip icon" src="https://api.iconify.design/lucide-cpu.svg?color=%230f7a4b" class="dev-icon" id="iufxe3" />Architecture &amp; Canvas
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="iq7qmf" class="ui-card dev-card">
+            <div class="dev-card-head" id="iw4dju">
+              <img alt="Palette icon" src="https://api.iconify.design/lucide-palette.svg?color=%230f7a4b" class="role-icon dev-icon" id="iaz9vg" />
+              <span class="role-title" id="ih7wte">UI/UX Designer</span>
+            </div>
+            <div class="dev-card-body" id="izh60w">
+              <img alt="UI designer photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;designer portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="i516sj" />
+              <div class="ui-info" id="iw2usm">
+                <span class="ui-name" id="id3a1q">Joshua Villarosa</span>
+                <span class="ui-subtitle dev-role-inline" id="iz167h">
+                  <img alt="Brush icon" src="https://api.iconify.design/lucide-brush.svg?color=%230f7a4b" class="dev-icon" id="iwdczz" />Visual System
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i87g9t" class="ui-card dev-card">
+            <div class="dev-card-head" id="i2k6ko">
+              <img alt="Pointer icon" src="https://api.iconify.design/lucide-pointer.svg?color=%230f7a4b" class="role-icon dev-icon" id="iyfa2i" />
+              <span class="role-title" id="ifj5gx">UI/UX Designer</span>
+            </div>
+            <div class="dev-card-body" id="iarksk">
+              <img alt="UI designer photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;designer portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="idai6m" />
+              <div class="ui-info" id="izjv3i">
+                <span class="ui-name" id="icxt6l">Cristian Maldia</span>
+                <span class="ui-subtitle dev-role-inline" id="i25z66">
+                  <img alt="Cursor icon" src="https://api.iconify.design/lucide-cursor-click.svg?color=%230f7a4b" class="dev-icon" id="igrzno" />Interaction
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="inz88l" class="ui-card dev-card">
+            <div class="dev-card-head" id="ihi7ku">
+              <img alt="Layers icon" src="https://api.iconify.design/lucide-layers.svg?color=%230f7a4b" class="role-icon dev-icon" id="ig2ipl" />
+              <span class="role-title" id="i058rs">UI/UX Designer</span>
+            </div>
+            <div class="dev-card-body" id="iq2yct">
+              <img alt="UI designer photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;designer portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="ijjonn" />
+              <div class="ui-info" id="ibu7fv">
+                <span class="ui-name" id="ihwu7z">Cedric Santos</span>
+                <span class="ui-subtitle dev-role-inline" id="iknuc4">
+                  <img alt="Grid icon" src="https://api.iconify.design/lucide-grid.svg?color=%230f7a4b" class="dev-icon" id="iknuka" />Design Systems
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="it4vwd" class="paper-grid dev-grid">
+          <div id="i97vhf" class="paper-card dev-card">
+            <div class="dev-card-head" id="in8pxy">
+              <img alt="File icon" src="https://api.iconify.design/lucide-file-text.svg?color=%230f7a4b" class="role-icon dev-icon" id="iyk4w2" />
+              <span class="role-title" id="ihg2dg">Paper Leader</span>
+            </div>
+            <div class="dev-card-body" id="imlv1h">
+              <img alt="Paper leader photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;researcher portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="ip9he3" />
+              <div class="paper-info" id="iuni68">
+                <span class="paper-name" id="i9y7xg">Angeline Manalo</span>
+                <span class="paper-subtitle dev-role-inline" id="ioi63a">
+                  <img alt="Beaker icon" src="https://api.iconify.design/lucide-beaker.svg?color=%230f7a4b" class="dev-icon" id="i16rbd" />Methods
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i4kmph" class="paper-card dev-card">
+            <div class="dev-card-head" id="ix5njz">
+              <img alt="File icon" src="https://api.iconify.design/lucide-file-text.svg?color=%230f7a4b" class="role-icon dev-icon" id="ivmxpl" />
+              <span class="role-title" id="ig968d">Paper Leader</span>
+            </div>
+            <div class="dev-card-body" id="imh2kq">
+              <img alt="Paper leader photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;researcher portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="i5bdxx" />
+              <div class="paper-info" id="ift8mp">
+                <span class="paper-name" id="i3n3vl">Trisha Timog</span>
+                <span class="paper-subtitle dev-role-inline" id="i5phfj">
+                  <img alt="Bar chart icon" src="https://api.iconify.design/lucide-bar-chart-3.svg?color=%230f7a4b" class="dev-icon" id="iegv31" />Results
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="inv369" class="researchers-grid dev-grid">
+          <div id="idjlgj" class="researcher-card dev-card">
+            <div class="dev-card-body" id="iqmibi">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="i7lgjo" />
+              <div class="researcher-info" id="iljyc2">
+                <span class="researcher-name" id="ifqzon">John Magtibay</span>
+                <span class="researcher-role dev-role-inline" id="i1eqma">
+                  <img alt="Code icon" src="https://api.iconify.design/lucide-code-2.svg?color=%230f7a4b" class="dev-icon" id="iglxl7" />Programmer
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i48x83" class="researcher-card dev-card">
+            <div class="dev-card-body" id="i1wqwg">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="iqg3hh" />
+              <div class="researcher-info" id="i45grw">
+                <span class="researcher-name" id="i6v1mk">Rhenzies Manipol</span>
+                <span class="researcher-role dev-role-inline" id="ilop5j">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="i54uqg" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i57ypn" class="researcher-card dev-card">
+            <div class="dev-card-body" id="i1nbhw">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="infnh3" />
+              <div class="researcher-info" id="ikv8i4">
+                <span class="researcher-name" id="icm8og">Leoncio Mejaro</span>
+                <span class="researcher-role dev-role-inline" id="ibb3uj">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="ijy7oe" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i5mfze" class="researcher-card dev-card">
+            <div class="dev-card-body" id="inskcg">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="ig56mz" />
+              <div class="researcher-info" id="irhhx2">
+                <span class="researcher-name" id="iw8sx2">Owen Mendoza</span>
+                <span class="researcher-role dev-role-inline" id="izxysu">
+                  <img alt="Video icon" src="https://api.iconify.design/lucide-video.svg?color=%230f7a4b" class="dev-icon" id="isw86t" />Video Editor
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="izxz4q" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ieye7e">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="icblpf" />
+              <div class="researcher-info" id="i9vnmt">
+                <span class="researcher-name" id="irk7h7">Mark Mendoza</span>
+                <span class="researcher-role dev-role-inline" id="i7ct7n">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="icqazk" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i73l0q" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ilb0yl">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="idkbfr" />
+              <div class="researcher-info" id="i7gkti">
+                <span class="researcher-name" id="iqtbfw">Alyssa Monato</span>
+                <span class="researcher-role dev-role-inline" id="id5db2">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="id41k5" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="iygtxt" class="researcher-card dev-card">
+            <div class="dev-card-body" id="iy912x">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="iixel5" />
+              <div class="researcher-info" id="iq1sy5">
+                <span class="researcher-name" id="iec5hb">Ken Narvaez</span>
+                <span class="researcher-role dev-role-inline" id="i380vl">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="imm9mv" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="icvnph" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ib2c0c">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="i7wme3" />
+              <div class="researcher-info" id="i72w4f">
+                <span class="researcher-name" id="ifohse">Dhaye Perez</span>
+                <span class="researcher-role dev-role-inline" id="ise69t">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="i3mwi1" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="ignlum" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ihcijy">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="io18fb" />
+              <div class="researcher-info" id="io2yp7">
+                <span class="researcher-name" id="ip52kd">Melanie Perez</span>
+                <span class="researcher-role dev-role-inline" id="i9kbvc">
+                  <img alt="Code icon" src="https://api.iconify.design/lucide-code-2.svg?color=%230f7a4b" class="dev-icon" id="ikkuk2" />Programmer
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="if45l5" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ic1a0j">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="ir9fp9" />
+              <div class="researcher-info" id="i1p4jy">
+                <span class="researcher-name" id="igpe0v">June Platon</span>
+                <span class="researcher-role dev-role-inline" id="iwh4s7">
+                  <img alt="Code icon" src="https://api.iconify.design/lucide-code-2.svg?color=%230f7a4b" class="dev-icon" id="ik81ml" />Programmer
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="iird44" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ieuapf">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="ijckav" />
+              <div class="researcher-info" id="ifwdeh">
+                <span class="researcher-name" id="i0ii8s">Nadine Quiatchon</span>
+                <span class="researcher-role dev-role-inline" id="i8r9hf">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="i5lvzg" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="idg7y5" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ihaywr">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="iwapts" />
+              <div class="researcher-info" id="i2cyrh">
+                <span class="researcher-name" id="ip2c7q">Rufino Quilao</span>
+                <span class="researcher-role dev-role-inline" id="i4p1w7">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="i4divg" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="iwxz8t" class="researcher-card dev-card">
+            <div class="dev-card-body" id="i31bwx">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="i78wji" />
+              <div class="researcher-info" id="i0guzl">
+                <span class="researcher-name" id="is6ouf">Samuel Samoza</span>
+                <span class="researcher-role dev-role-inline" id="ipwvuy">
+                  <img alt="Code icon" src="https://api.iconify.design/lucide-code-2.svg?color=%230f7a4b" class="dev-icon" id="in8ai1" />Programmer
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i1z7o2" class="researcher-card dev-card">
+            <div class="dev-card-body" id="i0tglg">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="iqybr8" />
+              <div class="researcher-info" id="ihk658">
+                <span class="researcher-name" id="ih53ti">Ace Toledo</span>
+                <span class="researcher-role dev-role-inline" id="idz7nf">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="iz3hkr" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="iuxxgb" class="researcher-card dev-card">
+            <div class="dev-card-body" id="iqivrc">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="igifpi" />
+              <div class="researcher-info" id="iu0giv">
+                <span class="researcher-name" id="i0whqk">Carl Valino</span>
+                <span class="researcher-role dev-role-inline" id="io7qxi">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="isj0xg" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+          <div id="i15v3v" class="researcher-card dev-card">
+            <div class="dev-card-body" id="ifecjp">
+              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="iqo327" />
+              <div class="researcher-info" id="ihv8ab">
+                <span class="researcher-name" id="iko5gn">Gabriel Zagala</span>
+                <span class="researcher-role dev-role-inline" id="icgogj">
+                  <img alt="Search icon" src="https://api.iconify.design/lucide-search.svg?color=%230f7a4b" class="dev-icon" id="ietq2j" />Researcher
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="iz7xbr" class="footer-note">
+          <div id="io0n8r" class="footer-note-left">
+            <img alt="Check icon" src="https://api.iconify.design/lucide-badge-check.svg?color=%230b5d3b" id="iajto2" class="badge-icon" />
+            <span id="ibfr6a" class="footer-note-text">Team of 22 developers</span>
+          </div>
+          <a href="#calculator" id="i7036c" class="gjs-t-button footer-note-button">Back to Calculator</a>
+        </div>
+      </div>
+    </section>
+    <footer class="footer" id="i0wcmj">
+      <div class="footer-container" id="iy7v5r">
+        <span class="footer-text" id="ix0udc">
+          <p data-pm-slice="0 0 []" id="ie4f5j">© 2025 ADVSTAT | Group 2. All rights reserved.</p>
+        </span>
+        <div class="footer-links" id="i8ec2k"></div>
+      </div>
+    </footer>
+    <script id="i2sf32">
+      (function() {
+        const $ = (id) => document.getElementById(id);
+
+        const inputs = {
+          h0op: $('h0-operator'),
+          h1op: $('h1-operator'),
+          mu0: $('mu0'),
+          xbar: $('xbar'),
+          sigma: $('sigma'),
+          n: $('n'),
+          alpha: $('alpha'),
+          computeBtn: $('computeBtn'),
+          resetBtn: $('resetBtn')
+        };
+        const outputs = {
+          zStat: $('zStat'),
+          criticalZ: $('criticalZ'),
+          tailInfo: $('tailInfo'),
+          decision: $('decision'),
+          pValue: $('pValue')
+        };
+
+        const canvas = $('curveCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function setCanvasSize() {
+          const rect = canvas.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.max(600, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(260, Math.floor(rect.height * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function pdf(x) {
+          return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
+        }
+
+        function cdf(x) {
+          // Abramowitz and Stegun approximation for CDF
+          const a1 = 0.254829592,
+            a2 = -0.284496736,
+            a3 = 1.421413741,
+            a4 = -1.453152027,
+            a5 = 1.061405429,
+            p = 0.3275911;
+          const sign = x < 0 ? -1 : 1;
+          x = Math.abs(x) / Math.SQRT2;
+          const t = 1 / (1 + p * x);
+          const y = 1 - ((((a5 * t + a4) * t + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+          return 0.5 * (1 + sign * y);
+        }
+
+        function tailType() {
+          const h1 = inputs.h1op.value;
+          if (h1 === '!=') return 'two';
+          if (h1 === '<') return 'left';
+          return 'right';
+        }
+
+        function criticalFor(alpha, tail) {
+          const map = {
+            '0.10': {
+              two: 1.6449 / Math.SQRT2 * Math.SQRT2,
+              left: -1.2816,
+              right: 1.2816
+            },
+            '0.05': {
+              two: 1.95996,
+              left: -1.64485,
+              right: 1.64485
+            },
+            '0.01': {
+              two: 2.57583,
+              left: -2.32635,
+              right: 2.32635
+            }
+          };
+          const a = (+alpha).toFixed(2);
+          const table = map[a] || map['0.05'];
+          if (tail === 'two') return [-table.two, table.two];
+          if (tail === 'left') return [table.left];
+          return [table.right];
+        }
+
+        function computeZ() {
+          const xbar = parseFloat(inputs.xbar.value);
+          const mu0 = parseFloat(inputs.mu0.value);
+          const sigma = parseFloat(inputs.sigma.value);
+          const n = parseFloat(inputs.n.value);
+
+          if (![xbar, mu0, sigma, n].every(v => Number.isFinite(v)) || sigma <= 0 || n <= 0) {
+            outputs.zStat.textContent = '—';
+            outputs.pValue.textContent = 'p-value: —';
+            return null;
+          }
+          const z = (xbar - mu0) / (sigma / Math.sqrt(n));
+          outputs.zStat.textContent = z.toFixed(4);
+
+          // p-value based on tail
+          const t = tailType();
+          let p;
+          if (t === 'two') {
+            p = 2 * (1 - cdf(Math.abs(z)));
+          } else if (t === 'left') {
+            p = cdf(z);
+          } else {
+            p = 1 - cdf(z);
+          }
+          outputs.pValue.textContent = 'p-value: ' + (isFinite(p) ? p.toExponential(4) : '—');
+          return z;
+        }
+
+        function updateCritical() {
+          const t = tailType();
+          const alpha = inputs.alpha.value;
+          const crit = criticalFor(alpha, t);
+          if (t === 'two') {
+            outputs.criticalZ.textContent = crit[0].toFixed(4) + ' and ' + crit[1].toFixed(4);
+            outputs.tailInfo.textContent = `Two-tailed test at α = ${alpha}`;
+          } else if (t === 'left') {
+            outputs.criticalZ.textContent = crit[0].toFixed(4);
+            outputs.tailInfo.textContent = `Left-tailed test at α = ${alpha}`;
+          } else {
+            outputs.criticalZ.textContent = crit[0].toFixed(4);
+            outputs.tailInfo.textContent = `Right-tailed test at α = ${alpha}`;
+          }
+          return crit;
+        }
+
+        function updateDecision(z, crit) {
+          if (z === null || !crit) {
+            outputs.decision.textContent = '—';
+            outputs.decision.className = 'text-xl font-[Poppins]';
+            return;
+          }
+          const t = tailType();
+          let reject = false;
+          if (t === 'two') {
+            reject = (z <= crit[0] || z >= crit[1]);
+          } else if (t === 'left') {
+            reject = (z <= crit[0]);
+          } else {
+            reject = (z >= crit[0]);
+          }
+          if (reject) {
+            outputs.decision.textContent = 'Reject H₀';
+            outputs.decision.className = 'text-xl font-[Poppins] text-[var(--gjs-t-color-error)]';
+          } else {
+            outputs.decision.textContent = 'Fail to reject H₀';
+            outputs.decision.className = 'text-xl font-[Poppins] text-[var(--gjs-t-color-success)]';
+          }
+        }
+
+        function drawCurve(z, crit) {
+          setCanvasSize();
+          const w = canvas.clientWidth;
+          const h = canvas.clientHeight;
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Axes margins
+          const left = 40,
+            right = 20,
+            top = 20,
+            bottom = 30;
+          const plotW = w - left - right;
+          const plotH = h - top - bottom;
+
+          // Map x in [-4,4] to px
+          const xMin = -4,
+            xMax = 4;
+          const yMax = pdf(0);
+
+          const xToPx = (x) => left + (x - xMin) / (xMax - xMin) * plotW;
+          const yToPx = (y) => top + (1 - y / yMax) * plotH;
+
+          // Draw baseline
+          ctx.strokeStyle = '#cfe0d8';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(left, yToPx(0));
+          ctx.lineTo(left + plotW, yToPx(0));
+          ctx.stroke();
+
+          // Draw normal curve
+          ctx.strokeStyle = '#0b5d3b';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          const steps = 300;
+          for (let i = 0; i <= steps; i++) {
+            const x = xMin + (i / steps) * (xMax - xMin);
+            const y = pdf(x);
+            const px = xToPx(x);
+            const py = yToPx(y);
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.stroke();
+
+          // Shade regions
+          function fillRegion(xStart, xEnd, colorFill, outline) {
+            const s = Math.max(xStart, xMin);
+            const e = Math.min(xEnd, xMax);
+            if (e <= s) return;
+            ctx.beginPath();
+            for (let i = 0; i <= steps; i++) {
+              const x = s + (i / steps) * (e - s);
+              const px = xToPx(x);
+              const py = yToPx(pdf(x));
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            // close to baseline
+            ctx.lineTo(xToPx(e), yToPx(0));
+            ctx.lineTo(xToPx(s), yToPx(0));
+            ctx.closePath();
+            ctx.fillStyle = colorFill;
+            ctx.fill();
+            if (outline) {
+              ctx.strokeStyle = outline;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+
+          // Determine rejection regions based on crit
+          const t = tailType();
+          if (crit) {
+            if (t === 'two') {
+              fillRegion(xMin, crit[0], '#ffe8e8', '#e09b9b');
+              fillRegion(crit[1], xMax, '#ffe8e8', '#e09b9b');
+              fillRegion(crit[0], crit[1], '#e9f6f0', '#7ec2a5');
+            } else if (t === 'left') {
+              fillRegion(xMin, crit[0], '#ffe8e8', '#e09b9b');
+              fillRegion(crit[0], xMax, '#e9f6f0', '#7ec2a5');
+            } else {
+              fillRegion(xMin, crit[0], '#e9f6f0', '#7ec2a5');
+              fillRegion(crit[0], xMax, '#ffe8e8', '#e09b9b');
+            }
+          }
+
+          // Draw critical lines
+          if (crit) {
+            ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = '#7aa897';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            if (t === 'two') {
+              ctx.moveTo(xToPx(crit[0]), top);
+              ctx.lineTo(xToPx(crit[0]), top + plotH);
+              ctx.moveTo(xToPx(crit[1]), top);
+              ctx.lineTo(xToPx(crit[1]), top + plotH);
+            } else {
+              ctx.moveTo(xToPx(crit[0]), top);
+              ctx.lineTo(xToPx(crit[0]), top + plotH);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+          }
+
+          // Draw Z line if available
+          if (z !== null && isFinite(z)) {
+            const zx = Math.max(xMin, Math.min(xMax, z));
+            ctx.strokeStyle = '#0a3f29';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(xToPx(zx), top);
+            ctx.lineTo(xToPx(zx), top + plotH);
+            ctx.stroke();
+
+            // Marker label
+            ctx.fillStyle = '#0a3f29';
+            ctx.font = '600 12px Inter, sans-serif';
+            ctx.fillText('Z = ' + z.toFixed(2), xToPx(zx) + 6, top + 16);
+          }
+
+          // X-axis tick labels
+          ctx.fillStyle = '#547866';
+          ctx.font = '12px Inter, sans-serif';
+          for (let tix = -3; tix <= 3; tix++) {
+            const px = xToPx(tix);
+            ctx.beginPath();
+            ctx.moveTo(px, yToPx(0));
+            ctx.lineTo(px, yToPx(0) + 6);
+            ctx.strokeStyle = '#cfe0d8';
+            ctx.stroke();
+            ctx.fillText(String(tix), px - 3, yToPx(0) + 18);
+          }
+        }
+
+        function sync() {
+          const crit = updateCritical();
+          const z = computeZ();
+          updateDecision(z, crit);
+          drawCurve(z, crit);
+        }
+
+        // Events
+        ['change', 'input'].forEach(evt => {
+          inputs.h0op.addEventListener(evt, sync);
+          inputs.h1op.addEventListener(evt, sync);
+          inputs.mu0.addEventListener(evt, sync);
+          inputs.xbar.addEventListener(evt, sync);
+          inputs.sigma.addEventListener(evt, sync);
+          inputs.n.addEventListener(evt, sync);
+          inputs.alpha.addEventListener(evt, sync);
+        });
+        inputs.computeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          sync();
+        });
+        inputs.resetBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          inputs.h0op.value = '=';
+          inputs.h1op.value = '!=';
+          inputs.mu0.value = '';
+          inputs.xbar.value = '';
+          inputs.sigma.value = '';
+          inputs.n.value = '';
+          inputs.alpha.value = '0.05';
+          outputs.zStat.textContent = '—';
+          outputs.criticalZ.textContent = '—';
+          outputs.tailInfo.textContent = 'Select H₁ to set tail.';
+          outputs.decision.textContent = '—';
+          outputs.pValue.textContent = 'p-value: —';
+          drawCurve(null, criticalFor('0.05', 'two'));
+        });
+
+        window.addEventListener('resize', () => drawCurve(computeZ(), criticalFor(inputs.alpha.value, tailType())));
+
+        // Initial render
+        setCanvasSize();
+        sync();
+      })();
+    </script>
+  </body>
+
 </html>
