@@ -251,7 +251,7 @@
               <div class="ui-info" id="izjv3i">
                 <span class="ui-name" id="icxt6l">Cristian Maldia</span>
                 <span class="ui-subtitle dev-role-inline" id="i25z66">
-                  <img alt="Brush icon" src="https://api.iconify.design/lucide-brush.svg?color=%230f7a4b" class="dev-icon" id="iwdczz" />Visual System
+                  <img alt="Brush icon" src="https://api.iconify.design/lucide-brush.svg?color=%230f7a4b" class="dev-icon" id="iwdczz" />Interaction
                 </span>
               </div>
             </div>
@@ -472,7 +472,7 @@
           </div>
           <div id="i15v3v" class="researcher-card dev-card">
             <div class="dev-card-body" id="ifecjp">
-              <img alt="Researcher photo" src="https://app.grapesjs.com/api/assets/random-image?query=&quot;student portrait&quot;&amp;w=120&amp;h=120" class="avatar" id="iqo327" />
+              <img alt="Researcher photo" src="/Images/zagala.png" class="avatar" id="iqo327" />
               <div class="researcher-info" id="ihv8ab">
                 <span class="researcher-name" id="iko5gn">Gabriel Zagala</span>
                 <span class="researcher-role dev-role-inline" id="icgogj">
@@ -485,7 +485,7 @@
         <div id="iz7xbr" class="footer-note">
           <div id="io0n8r" class="footer-note-left">
             <img alt="Check icon" src="https://api.iconify.design/lucide-badge-check.svg?color=%230b5d3b" id="iajto2" class="badge-icon" />
-            <span id="ibfr6a" class="footer-note-text">Team of 22 developers</span>
+            <span id="ibfr6a" class="footer-note-text">Team of 22 Developers</span>
           </div>
           <a href="#calculator" id="i7036c" class="gjs-t-button footer-note-button">Back to Calculator</a>
         </div>
@@ -833,6 +833,160 @@
         // Initial render
         setCanvasSize();
         sync();
+      })();
+    </script>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-widget">
+      <div id="chatbot-bubble" class="chatbot-bubble">
+        <img alt="Chatbot icon" src="/Images/bot.png" class="chatbot-icon" />
+      </div>
+      <div id="chatbot-panel" class="chatbot-panel hidden">
+        <div class="chatbot-header">
+          <h3>Hypothesis Testing Assistant</h3>
+          <button id="chatbot-close" class="chatbot-close">&times;</button>
+        </div>
+        <div class="chatbot-content">
+          <div id="chatbot-messages" class="chatbot-messages">
+            <div class="message bot-message">
+              <p>Hi! I'm your Hypothesis Testing Assistant. Ask me anything about hypothesis testing, Z-tests, significance levels, or statistical decisions!</p>
+            </div>
+          </div>
+          <div class="chatbot-suggestions">
+            <p class="suggestions-label">Common Questions:</p>
+            <button class="suggestion-btn" data-question="What is a null hypothesis?">What is a null hypothesis?</button>
+            <button class="suggestion-btn" data-question="How do I calculate the Z-statistic?">How do I calculate Z?</button>
+            <button class="suggestion-btn" data-question="What does alpha represent?">What does alpha mean?</button>
+            <button class="suggestion-btn" data-question="What is the difference between one-tailed and two-tailed tests?">One-tailed vs Two-tailed?</button>
+          </div>
+          <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Ask about hypothesis testing..." />
+            <button id="chatbot-send" class="chatbot-send">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fade-in Animation Script -->
+    <script id="fade-in-script">
+      // Chatbot functionality
+      (function() {
+        const bubble = document.getElementById('chatbot-bubble');
+        const panel = document.getElementById('chatbot-panel');
+        const closeBtn = document.getElementById('chatbot-close');
+        const input = document.getElementById('chatbot-input');
+        const sendBtn = document.getElementById('chatbot-send');
+        const messagesContainer = document.getElementById('chatbot-messages');
+        const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+        // Toggle panel
+        bubble.addEventListener('click', () => {
+          panel.classList.toggle('hidden');
+          if (!panel.classList.contains('hidden')) {
+            input.focus();
+          }
+        });
+
+        closeBtn.addEventListener('click', () => {
+          panel.classList.add('hidden');
+        });
+
+        // Chatbot responses
+        const responses = {
+          'null hypothesis': 'The null hypothesis (H₀) is a statement that assumes there is no significant difference or effect. It\'s what you\'re trying to test against.',
+          'alternative hypothesis': 'The alternative hypothesis (H₁) is what you believe to be true if you reject the null hypothesis. It represents the effect or difference you\'re testing for.',
+          'z-statistic': 'The Z-statistic measures how many standard errors your sample mean is from the hypothesized population mean. Formula: Z = (x̄ − μ₀) / (σ / √n)',
+          'z score': 'The Z-score is the same as the Z-statistic. It tells you how far a data point is from the mean in terms of standard deviations.',
+          'alpha': 'Alpha (α) is the significance level—the probability of rejecting the null hypothesis when it\'s actually true (Type I error). Common values: 0.05, 0.01, 0.10.',
+          'critical value': 'The critical value is the threshold value from the Z-table. If your calculated Z-statistic is more extreme than this, you reject the null hypothesis.',
+          'p-value': 'The p-value is the probability of observing a test statistic as extreme as the one calculated, given that the null hypothesis is true. Small p-values suggest rejecting H₀.',
+          'rejection region': 'The rejection region (or critical region) is the range of Z-values that lead to rejecting the null hypothesis. It\'s located in the tail(s) of the normal distribution.',
+          'one-tailed': 'A one-tailed (or directional) test checks for an effect in one specific direction: either less than or greater than the hypothesized mean.',
+          'two-tailed': 'A two-tailed test checks for an effect in both directions: whether the value is significantly different (not equal to) the hypothesized mean.',
+          'acceptance region': 'The acceptance region is the central area under the normal curve where you fail to reject the null hypothesis. Values here are not considered statistically significant.',
+          'type i error': 'A Type I error occurs when you reject the null hypothesis when it\'s actually true. The probability equals alpha (α).',
+          'type ii error': 'A Type II error occurs when you fail to reject the null hypothesis when it\'s actually false. Related to the concept of statistical power.',
+          'power': 'Statistical power is the probability of correctly rejecting the null hypothesis when it\'s false. Higher power is better; typically 0.80 or higher is desired.',
+          'confidence level': 'The confidence level is 1 − α. For example, if α = 0.05, the confidence level is 95%. It represents how confident you are that the true parameter lies within a confidence interval.',
+          'standard error': 'The standard error measures how much the sample mean varies from the population mean. Formula: SE = σ / √n',
+          'sample size': 'Sample size (n) is the number of observations in your sample. Larger samples generally lead to smaller standard errors and more reliable results.',
+          'population mean': 'The population mean (μ) is the average of all values in the entire population. Your sample mean (x̄) is used to estimate it.',
+          'standard deviation': 'Standard deviation (σ) measures how spread out the data is from the mean. Used in the Z-statistic formula to standardize the difference.',
+        };
+
+        function getBotResponse(userMessage) {
+          const lowerMessage = userMessage.toLowerCase();
+          
+          // Check for keyword matches
+          for (const [keyword, response] of Object.entries(responses)) {
+            if (lowerMessage.includes(keyword)) {
+              return response;
+            }
+          }
+
+          // If no match found, provide a helpful redirect
+          return 'I\'m specialized in hypothesis testing topics. Please ask me about null hypotheses, alternative hypotheses, Z-statistics, significance levels, p-values, critical values, one-tailed vs two-tailed tests, or other hypothesis testing concepts!';
+        }
+
+        function addMessage(text, isUser = false) {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
+          const p = document.createElement('p');
+          p.textContent = text;
+          messageDiv.appendChild(p);
+          messagesContainer.appendChild(messageDiv);
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function sendMessage() {
+          const userMessage = input.value.trim();
+          if (!userMessage) return;
+
+          addMessage(userMessage, true);
+          input.value = '';
+
+          // Simulate typing delay
+          setTimeout(() => {
+            const response = getBotResponse(userMessage);
+            addMessage(response, false);
+          }, 500);
+        }
+
+        // Event listeners
+        sendBtn.addEventListener('click', sendMessage);
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') sendMessage();
+        });
+
+        // Suggestion buttons
+        suggestionBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const question = btn.getAttribute('data-question');
+            input.value = question;
+            input.focus();
+          });
+        });
+
+        // Fade-in animations for sections
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('fade-in-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section, .info-card, .notes-card, .dev-card, .result-card').forEach(el => {
+          el.classList.add('fade-in');
+          observer.observe(el);
+        });
       })();
     </script>
   </body>
